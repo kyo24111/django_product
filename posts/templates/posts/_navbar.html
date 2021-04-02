@@ -1,0 +1,8 @@
+{% if user.is_authenticated %}
+<p>{{ user.get_username }}でログイン中</p>
+{% else %}
+<p>ログインしていません</p>
+{% endif %}
+<a href="{% url 'geo_index' %}">地図を表示</a>
+<a href="{% url 'post' %}">投稿一覧を表示</a>
+<!-- 相対パスにできる -->
