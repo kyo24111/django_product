@@ -1,28 +1,31 @@
-{% load static %}
 <!-- ロードは必ず先頭+再起動 -->
 <!DOCTYPE html>
+{% load static %}
 <html lang="ja-jp">
 <head>
     <title>投稿一覧</title>
     <link rel="stylesheet" href="{% static 'style.css' %}"> <!-- loadが必要。includeは大丈夫 -->
+    <link rel="stylesheet" href="{% static 'posts.css' %}">
 </head>
 <header>
     {% include "posts/_navbar.html" %}
 </header>
 <body>
-    <h2>これはユーザー一覧のページです！</h2>
+    <h2>登山日記</h2>
 
     <h3>ユーザー</h3>
 
     {% for post in posts.all %}
+        <div id="posts_order">
+            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+            <br><br>
+            {{ post.published }}
+            <br><br>
+            <img src="{{ post.image.url }}" >
+            {{ post.summary }}
+            <br><br>
+        </div>
 
-        <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
-        <br><br>
-        {{ post.published }}
-        <br><br>
-        <img src="{{ post.image.url }}" >
-        {{ post.summary }}
-        <br><br>
 
 
     {% endfor %}

@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import myblogapp
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -127,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # cssファイル追加のために追加
+STATIC_ROOT = '/var/www/{}/static'.format(myblogapp) # cssファイル追加のために追加
 MEDIA_URL = '/pics/'
 MEDIA_ROOT = BASE_DIR
 LOGIN_URL = 'login' # ログインしていないときのリダイレクト先
